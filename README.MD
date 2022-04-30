@@ -50,7 +50,7 @@ Term | Usage
 `Cluster` | A cluster is a collection of nodes which together holds data and provides joined indexing and search capabilities.
 `Node` | A node is an elasticsearch Instance. It is created when an elasticsearch instance begins.
 `Index` | An index is a collection of documents which has similar characteristics. e.g., customer data, product catalog. It is very useful while performing indexing, search, update, and delete operations. It allows you to define as many indexes in one single cluster.
-`Document` | It is the basic unit of information which can be indexed. It is expressed in JSON (key: value) pair. ‘{“user”: “nullcon”}’. Every single Document is associated with a type and a unique id.
+`Document` | It is the basic unit of information which can be indexed. It is expressed in JSON (key: value) pair. `{"user": "e3stpavel"}`. Every single Document is associated with a type and a unique id.
 `Shard` | Every index can be split into several shards to be able to distribute data. The shard is the atomic part of an index, which can be distributed over the cluster if you want to add more nodes.
 
 ## What is Kibana?
@@ -98,9 +98,9 @@ __ELK Stack is designed to allow users to take data from any source, in any form
 
 Letter | Stands For
 --- | ---
-E | ElasticSearch: used for storing logs
-L | LogStash: used for both shipping as well as processing and storing logs
-K | Kibana: is a visualization tool (a web interface) which is hosted through Nginx or Apache
+E | __ElasticSearch__: used for storing logs
+L | __LogStash__: used for both shipping as well as processing and storing logs
+K | __Kibana__: is a visualization tool (a web interface) which is hosted through Nginx or Apache
 
 ### What is ELK Stack architecture?
 The following table shows the compound of ELK Stack architecture. 
@@ -111,6 +111,8 @@ Logstash | Collect logs and events data. It even parses and transforms data
 Elasticsearch | The transformed data from Logstash is stored, searched and indexed
 Kibana | Kibana uses Elasticsearch database to explore, visualize and share
 
+![ELK Stack](assets/ELKStack.jpg "ELK Stack")
+
 ### Why Elastic Stack?
 
 However, one more component is needed or Data collection called __Beats__. 
@@ -118,6 +120,8 @@ However, one more component is needed or Data collection called __Beats__.
 __Beats are "data shippers"__ that are installed on servers as agents used to send different types of operational data to Elasticsearch either directly or through Logstash, where the data might be enhanced or archived.
 
 This led Elastic to rename ELK as the __Elastic Stack__.
+
+![Elastic Stack](assets/ELKStackFull.jpg "Elastic Stack")
 
 ## Creating our own instance using Docker Compose
 For this tutorial we gonna run an __Elasticsearch single node cluster with Kibana using `docker-compose`__.
@@ -154,5 +158,30 @@ You can reach Elasticsearch at `http://localhost:9200`. That's useful for develo
 
 ### How to reach Kibana?
 Kibana will be running at `http://localhost:5601` and you can simply open it in your favourite web browser.
+
+## Using Kibana for data visualisation
+To quickly get up and running with Kibana we will add a sample data set that we can explore and analyze.
+
+### Add the sample data
+Sample data sets come with sample visualizations, dashboards, and more to help you explore Kibana before you ingest or add your own data.
+
+To add a sample data set let's move to the __"Home"__ and under the __"Get started by adding integrations"__ section click __"Try sample data"__ button.
+
+![Try sample data](assets/KibanaSampleData.png "Try sample data")
+
+For this tutorial let's select __"Sample eCommerce orders"__ sample data set. Click __"Add data"__ button.
+
+![Add data](assets/KibanaAddData.png "Add data")
+
+After this you will get the message in left bottom corner that the data was added.
+
+### View and analyze the data
+Let's move to the __"Dashboard"__ by clicking on __"View Data"__ and selecting the __"Dashboard"__ in the drop down menu.
+
+![Go to the Dashboard](assets/KibanaGoToDash.png "Go to the Dashboard")
+
+The __"Dashboard"__ should look like this:
+
+![Dashboard](assets/KibanaDash.png "Dashboard")
 
 
