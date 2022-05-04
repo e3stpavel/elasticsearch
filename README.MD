@@ -20,6 +20,12 @@ Brief presentation about Elasticsearch and Elastic Stack as well as quick tutori
    3. [Run it using Docker Engine](#run-it-using-docker-engine)
    4. [How to reach Elasticsearch?](#how-to-reach-elasticsearch)
    5. [How to reach Kibana?](#how-to-reach-kibana)
+5. [Using Kibana for data visualisation](#using-kibana-for-data-visualisation)
+   1. [Add the sample data](#add-the-sample-data)
+   2. [View and analyze the data](#view-and-analyze-the-data)
+   3. [Explore the data](#explore-the-data)
+6. [Understanding the Elasricsearch Rest basics](#understanding-the-elasricsearch-rest-basics)
+   1. [Get CAT APIs](#get-cat-apis)
 
 ## What is Elasticsearch?
 __Elasticsearch is a NoSQL database.__ It is based on Lucene search engine, and it is built with RESTful APIS. It offers simple deployment, maximum reliability, and easy management. It also offers advanced queries to perform detail analysis and stores all the data centrally. __It is helpful for executing a quick search of the documents.__
@@ -184,4 +190,38 @@ The __"Dashboard"__ should look like this:
 
 ![Dashboard](assets/KibanaDash.png "Dashboard")
 
+### Explore the data
+As written in official documentation:
+> Discover displays the data in an interactive histogram that shows the distribution of data, or documents, over time, and a table that lists the fields for each document that matches the data view. To view a subset of the documents, you can apply filters to the data, and customize the table to display only the fields you want to explore.
 
+You can reach the discover page by simply clicking on __burger icon__ and under the section __"Analytics"__ choosing __"Discover"__.
+
+The __"Discover"__ page looks like this:
+
+![Discover](assets/KibanaDisc.png "Discover")
+
+The more in-depth information can be found in here: [Get Started with Kibana](https://www.elastic.co/guide/en/kibana/current/get-started.html)
+
+## Understanding the Elasricsearch Rest basics
+In order to use the Elasticsearch as the database we need to understand the basic CRUD operations: we need somehow create data, read it, update and delete as well. The Elasticsearch requires making REST requests in order to manipulate data. There's ton of different ways to make requests but we will look to the most common ones.
+
+### Get CAT APIs
+Human eyes, especially when looking at a terminal, need compact and aligned text and therefore the compact and aligned text (CAT) APIs were introduced.
+
+> __Important!__ CAT APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, we recommend using a corresponding JSON API.
+
+Firstly let's __get all the indices (indexes) in a cluster__ by using compact and aligned text (CAT) APIs by using the following command:
+
+` GET /_cat/indices `
+
+The output is now looks like this:
+
+```
+green  open kibana_sample_data_ecommerce 26K0WXsERISQIgD50IDVCQ 1 0 4675 0 4.1mb 4.1mb
+```
+
+This means that we have ecommerce sample data that we added previously in our cluster.
+
+As I already mentioned there's a ton of other commands and you can check them here: [Compact and aligned text (CAT) APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html)
+
+###
